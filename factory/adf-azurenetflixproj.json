@@ -1,0 +1,9 @@
+{
+	"name": "adf-azurenetflixproj",
+	"location": "canadaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "73e99d08-ce07-4a9c-b71a-c3974951c204",
+		"tenantId": "304c3655-a3d2-44b7-8cd5-3250f4bbb0a5"
+	}
+}
