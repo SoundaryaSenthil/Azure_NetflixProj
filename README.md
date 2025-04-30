@@ -83,7 +83,7 @@ Scheduled Workflows via Lookup Notebooks
 
 ---
 
-## Challenges & Solutions
+## Challenges faced & Solutions
 
 ### 1. Streaming Limitation in Serverless Compute
 - **Issue**: Serverless compute with Autoloader only allowed one-time loads.
