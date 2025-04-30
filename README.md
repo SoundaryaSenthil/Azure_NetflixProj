@@ -1,71 +1,114 @@
+
 # Azure Netflix Data Engineering Project
 
-# Project Description
+## Project Overview
 
-This project focuses on building a fully automated, scalable, and efficient data ingestion and processing pipeline using Azure services for processing Netflix-related datasets. The pipeline fetches data from GitHub, validates it, performs multi-stage transformations using Databricks, and stores the curated data in a structured Data Lake with layered architecture (Raw, Bronze, Silver, Gold). The project is designed to support incremental loads, parameterized workflows, scheduling, and robust data quality checks using Delta Live Tables (DLT).
+This project implements a dynamic and scalable data engineering pipeline on Azure to process Netflix-related data from GitHub. It leverages Azure Data Factory for orchestration, Azure Data Lake Storage for storage, and Databricks with Unity Metastore for processing and transformation. The pipeline is designed to perform validation, conditional loading, parallel processing, and multi-stage data transformations using a bronze-silver-gold layer architecture.
 
-# Project Architecture:
+---
 
-# GitHub (Data Source)
+## Architecture
+
+```
+GitHub (Data Source)
        |
        v
-# Azure Data Factory (Dynamic Pipeline)
+Azure Data Factory (Dynamic Pipeline)
        |     |-- Data Validation & File Filtering
        |     |-- ForEach Activity (Parallel Load)
        v
-# Azure Data Lake Storage Gen2 (Raw Zone)
+Azure Data Lake Storage Gen2 (Raw Zone)
        |
        v
-# Databricks (Connected via DB Utils & Unity Metastore)
+Databricks (Connected via DB Utils & Unity Metastore)
        |
        |-- Autoloader: Raw to Bronze (Streaming)
        |-- Silver: Data Cleansing & Transformation
        |-- Gold: Aggregation + Business Rules using DLT
        |
        v
-# Azure Data Lake (Bronze, Silver, Gold, Meta Layers)
+Azure Data Lake (Bronze, Silver, Gold, Meta Layers)
        |
        v
-# Scheduled Workflows via Lookup Notebooks
+Scheduled Workflows via Lookup Notebooks
+```
 
-**Technologies & Skills Used:**
-	•**Cloud Platform**: Microsoft Azure
-	•**Data Lake:** Azure Data Lake Storage Gen2
-	•**Data Orchestration**: Azure Data Factory (ADF)
-	•**Data Processing & Transformation:** Databricks (PySpark, SQL, Autoloader)
-	•**Metadata Management:** Unity Catalog & External Locations
-        •**WorkflowManagement:** Databricks Workflows & Lookup Notebooks
-	•**Scheduling:** Cron-based notebook scheduling with weekday conditions
-	•**Data Quality:** Delta Live Tables (DLT) with Expectation Rules
-	•**Languages:** Python, PySpark, SQL
-	•**Version Control:**  GitHub
+---
 
-⸻
+## Technologies & Tools
 
-**My Contributions**
-	•Designed and implemented a dynamic ADF pipeline that imports files from GitHub to ADLS, with parameterized arrays and parallel execution using ForEach activity.
-	•Built data validation logic to check for the presence of required master files before processing.
-	•Set up Databricks external locations using Unity Metastore for all layers: Raw, Bronze, Silver, Gold, and Meta.
-	•Developed Autoloader jobs to stream files from Raw to Bronze layer efficiently.
-	•Created transformation notebooks for Silver layer that handled:
-	•Null filling
-	•Data type casting
-	•Column splitting and flag creation
-	•Window functions (ranking)
-	•Aggregations (counts by show/movie type)
-	•Scheduled workflows using lookup notebooks to run on specific days (only Sundays).
-	•Built DLT pipelines for Gold layer with expectation rules (e.g., show_id IS NOT NULL) for quality enforcement.
-	•Maintained modular, reusable, and production-friendly code with clear separation of layers and parameters.
+- **Cloud Platform**: Microsoft Azure
+- **Storage**: Azure Data Lake Storage Gen2
+- **Orchestration**: Azure Data Factory (ADF)
+- **Data Processing**: Azure Databricks (with Unity Catalog)
+- **Languages**: Python, PySpark, SQL
+- **Streaming**: Autoloader
+- **Data Quality & ETL**: Delta Live Tables (DLT)
+- **Workflow Scheduling**: Databricks Workflows + Lookup Notebooks
+- **Version Control**: GitHub
 
-⸻
+---
 
-**Challenges Faced and Solutions**
-	1.Streaming Limitation in Serverless Autoloader
-	•Issue: Serverless compute only loaded data once; it didn’t support continuous streaming.
-	•Solution: Switched to all-purpose compute clusters in Databricks which allowed the Autoloader to work in streaming mode.
-	2.Handling Missing Master Files
-	•Issue: Pipeline would break if required master file wasn’t present in the Raw zone.
-	•Solution: Implemented data validation logic in ADF to skip processing when critical files were missing.
-	3.Workflow Scheduling Constraints
-	•Issue: Needed pipeline to run only on Sundays with conditional logic.
-	•Solution: Used a lookup notebook to dynamically check the weekday and proceed only if the day was Sunday.
+## Features
+
+- Dynamic and parameterized ADF pipeline for ingesting files from GitHub.
+- Data validation to ensure presence of master files before processing.
+- Parallel file loading using ForEach activity.
+- Structured data lake zones: Raw, Bronze, Silver, Gold, and Meta.
+- Real-time ingestion using Databricks Autoloader.
+- Complex transformations using PySpark (casting, null handling, column operations, window functions, aggregations).
+- Conditional workflow scheduling (only run on Sundays).
+- Gold layer processing using Delta Live Tables (DLT) with quality checks (`show_id IS NOT NULL`).
+
+---
+
+## My Contributions
+
+- Designed and developed a parameterized dynamic ADF pipeline.
+- Implemented validation checks for essential files.
+- Set up Databricks external locations and Unity Metastore.
+- Created notebooks for all transformation stages (bronze → silver → gold).
+- Handled complex data logic (e.g., flag creation, ranking, counts by show/movie types).
+- Developed a lookup notebook for dynamic workflow scheduling.
+- Applied DLT rules for ensuring data quality in the gold layer.
+
+---
+
+## Challenges & Solutions
+
+### 1. Streaming Limitation in Serverless Compute
+- **Issue**: Serverless compute with Autoloader only allowed one-time loads.
+- **Solution**: Switched to all-purpose compute clusters for continuous streaming.
+
+### 2. Missing Master Files Breaking the Pipeline
+- **Issue**: Pipeline failed if master files were not available.
+- **Solution**: Built validation logic to skip execution if required files were missing.
+
+### 3. Weekday-Based Scheduling
+- **Issue**: Pipeline needed to run only on Sundays.
+- **Solution**: Created a lookup notebook to detect the current day and conditionally execute the workflow.
+
+---
+
+## Folder Structure (Suggested)
+
+```
+├── notebooks/
+│   ├── bronze_autoloader.py
+│   ├── silver_transformation.py
+│   ├── gold_dlt_pipeline.py
+│   ├── lookup_scheduler.py
+├── adf/
+│   └── pipeline_definition.json
+├── data/
+│   └── sample_github_files/
+├── README.md
+```
+
+---
+
+## Contact
+
+If you have any questions or want to collaborate, feel free to connect with me on [LinkedIn](https://www.linkedin.com/) or open an issue.
+
+---
