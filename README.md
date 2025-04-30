@@ -62,7 +62,7 @@ Scheduled Workflows via Lookup Notebooks
 - Real-time ingestion using Databricks Autoloader.
 - Complex transformations using PySpark (casting, null handling, column operations, window functions, aggregations).
 - Conditional workflow scheduling (only run on Sundays).
-- Gold layer processing using Delta Live Tables (DLT) with quality checks (`show_id IS NOT NULL`).
+- Gold layer processing using Delta Live Tables (DLT) with quality checks Example: (`show_id IS NOT NULL`).
 
 ---
 ![Screenshot 2025-04-29 231018](https://github.com/user-attachments/assets/725ce5c1-d231-4ea1-8e33-3b54cb5800cd)
