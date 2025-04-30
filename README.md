@@ -5,7 +5,8 @@
 
 This project implements a dynamic and scalable data engineering pipeline on Azure to process Netflix-related data from GitHub. It leverages Azure Data Factory for orchestration, Azure Data Lake Storage for storage, and Databricks with Unity Metastore for processing and transformation. The pipeline is designed to perform validation, conditional loading, parallel processing, and multi-stage data transformations using a bronze-silver-gold layer architecture.
 
-![ChatGPT Image Apr 30, 2025, 10_27_03 PM](https://github.com/user-attachments/assets/97b4073d-7783-40e9-b3e4-bf55b874710f)
+![IMG_6835](https://github.com/user-attachments/assets/e4f7d4ad-6da6-4e76-82a8-5f30845c1f01)
+
 
 ---
 
