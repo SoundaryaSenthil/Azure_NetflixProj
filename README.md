@@ -5,6 +5,8 @@
 
 This project implements a dynamic and scalable data engineering pipeline on Azure to process Netflix-related data from GitHub. It leverages Azure Data Factory for orchestration, Azure Data Lake Storage for storage, and Databricks with Unity Metastore for processing and transformation. The pipeline is designed to perform validation, conditional loading, parallel processing, and multi-stage data transformations using a bronze-silver-gold layer architecture.
 
+![ChatGPT Image Apr 30, 2025, 10_27_03 PM](https://github.com/user-attachments/assets/97b4073d-7783-40e9-b3e4-bf55b874710f)
+
 ---
 
 ## Architecture
@@ -34,6 +36,7 @@ Scheduled Workflows via Lookup Notebooks
 ```
 
 ---
+![Screenshot 2025-04-30 213735](https://github.com/user-attachments/assets/0a674de0-a969-4d00-8df1-818a01f0348f)
 
 ## Technologies & Tools
 
@@ -61,6 +64,12 @@ Scheduled Workflows via Lookup Notebooks
 - Gold layer processing using Delta Live Tables (DLT) with quality checks (`show_id IS NOT NULL`).
 
 ---
+![Screenshot 2025-04-29 231018](https://github.com/user-attachments/assets/725ce5c1-d231-4ea1-8e33-3b54cb5800cd)
+![Screenshot 2025-04-29 232301](https://github.com/user-attachments/assets/a2b2c6c8-6031-47dd-a211-83762f7c3756)
+![Screenshot 2025-04-30 213245](https://github.com/user-attachments/assets/397097f0-b58b-4e4e-b8a3-f3a75542f33e)
+![Screenshot 2025-04-30 222831](https://github.com/user-attachments/assets/df74c64d-983e-4036-82d9-1ba5a717e3ca)
+
+
 
 ## My Contributions
 
@@ -89,26 +98,15 @@ Scheduled Workflows via Lookup Notebooks
 - **Solution**: Created a lookup notebook to detect the current day and conditionally execute the workflow.
 
 ---
+![Screenshot 2025-04-30 200707](https://github.com/user-attachments/assets/ed446c2e-af2c-411a-8d1a-555a72b48395)
+![Screenshot 2025-04-30 200930](https://github.com/user-attachments/assets/21270b7b-7e40-45c5-8504-58d9dffe6891)
 
-## Folder Structure (Suggested)
-
-```
-├── notebooks/
-│   ├── bronze_autoloader.py
-│   ├── silver_transformation.py
-│   ├── gold_dlt_pipeline.py
-│   ├── lookup_scheduler.py
-├── adf/
-│   └── pipeline_definition.json
-├── data/
-│   └── sample_github_files/
-├── README.md
-```
 
 ---
 
 ## Contact
 
-If you have any questions or want to collaborate, feel free to connect with me on [LinkedIn](https://www.linkedin.com/) or open an issue.
+If you have any questions or want to collaborate, feel free to connect with me on [LinkedIn](linkedin.com/in/soundarya-s-dataengineer).
 
 ---
+Happy learning!!
