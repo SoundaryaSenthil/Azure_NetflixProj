@@ -107,7 +107,7 @@ Scheduled Workflows via Lookup Notebooks
 
 ## Contact
 
-If you have any questions or want to collaborate, feel free to connect with me on [LinkedIn](linkedin.com/in/soundarya-s-dataengineer).
+If you have any questions, feel free to connect with me on [LinkedIn](linkedin.com/in/soundarya-s-dataengineer).
 
 ---
 Happy learning!!
